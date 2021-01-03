@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-mx-12">
+    <ol>
+      <li id="amount">
+        <label for="amount">Exchange Amount:    </label>
+        <input type="number">
+      </li>
+
+      <li>
+        <select [(ngModel)]="dovizList" name="doviz">
+          <option *ngFor="let doviz of dovizList" [value]="doviz.name">
+            {{doviz?.name}}
+          </option>
+        </select>
+      </li>
+      <tbody>
+        <!-- <tr *ngFor="let doviz of dovizList">
+            <td>{{doviz.name}}</td>
+            <td>{{doviz.buying}}</td>
+            <td>{{doviz.selling}}</td>
+            <td>{{doviz.type}}</td>
+
+        </tr>
+        <tr>
+          <div *ngFor="let key of objectKeys(dovizList)">
+
+          <div *ngFor="let childKey of objectKeys(dovizList[key])">
+            <p>{{childKey?.name}}</p>
+            <p>{{childKey?.buying}}</p>
+            <p>{{childKey?.selling}}</p>
+            <p>{{childKey?.type}}</p>
+          </div>
+          </div>
+        </tr> -->
+
+    </ol>
+  </div>
+</div>
