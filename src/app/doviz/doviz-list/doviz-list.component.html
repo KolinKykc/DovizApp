@@ -1,38 +1,79 @@
 <div class="row">
   <div class="col-mx-12">
-    <ol>
-      <li id="amount">
-        <label for="amount">Exchange Amount:    </label>
-        <input type="number">
-      </li>
-
+    <div formGroupName="dovizForm" >
+    <ul>
       <li>
-        <select [(ngModel)]="dovizList" name="doviz">
-          <option *ngFor="let doviz of dovizList" [value]="doviz.name">
-            {{doviz?.name}}
-          </option>
-        </select>
+        Exchange Amount: <input type="number" [(ngModel)]="exchangeAmount">
+        {{exchangeAmount}}
       </li>
-      <tbody>
-        <!-- <tr *ngFor="let doviz of dovizList">
-            <td>{{doviz.name}}</td>
-            <td>{{doviz.buying}}</td>
-            <td>{{doviz.selling}}</td>
-            <td>{{doviz.type}}</td>
+      <li id="amount">
+        <label for="amount">Exchange Amount: </label>
+        <input type="text" formControlName="exchangeAmount">
+      </li>
+    <li>
+    <form #kur1="ngForm">
+    <label for="kur">Choose Currency:</label>
+    <select style="margin-left: 3rem" name="kur1" ngModel id="kur1">
+      <option value="" disabled>Choose a currrency</option>
+      <option [ngValue]="doviz?.name" *ngFor="let doviz of dovizList">
+        {{ doviz.name }}
+      </option>
+    </select>
+  </form>
+  <p>Form value: {{ kur1.value | json }}</p>
 
-        </tr>
-        <tr>
-          <div *ngFor="let key of objectKeys(dovizList)">
+</li>
+<li>
+  <form #kur2="ngForm">
+  <label for="kur">Choose Currency:</label>
+  <select style="margin-left: 3rem" name="kur2" ngModel id="kur2">
+    <!-- <option [value]="0" [disabled]="crrForm.Currency.value !== 0">
+      Choose an option
+    </option> -->
+    <option [ngValue]="doviz?.name" *ngFor="let doviz of dovizList">
+      {{ doviz.name }}
+    </option>
+  </select>
+</form>
+<p>Form value: {{ kur2.value | json }}</p>
 
-          <div *ngFor="let childKey of objectKeys(dovizList[key])">
-            <p>{{childKey?.name}}</p>
-            <p>{{childKey?.buying}}</p>
-            <p>{{childKey?.selling}}</p>
-            <p>{{childKey?.type}}</p>
-          </div>
-          </div>
-        </tr> -->
 
-    </ol>
+</li>
+</ul>
+</div>
   </div>
 </div>
+
+
+<!-- <div style="margin-left: 3rem" *ngFor="let doviz of dovizList">
+      <p>{{ doviz.name }}</p>
+      <p>{{ doviz.buying }}</p>
+      <p>{{ doviz.selling }}</p>
+      <p>{{ doviz.type }}</p>
+    </div> -->
+
+   <!-- <li>
+      <select [(ngModel)]="dovizList" name="doviz">
+        <option *ngFor="let doviz of dovizList" [value]="doviz.name">
+          {{ doviz?.name }}
+        </option>
+      </select>
+    </li> -->
+
+      <!-- <tr *ngFor="let doviz of dovizList">
+        <td>{{ doviz.name }}</td>
+        <td>{{ doviz.buying }}</td>
+        <td>{{ doviz.selling }}</td>
+        <td>{{ doviz.type }}</td>
+      </tr> -->
+      <!--<tr>
+        <div *ngFor="let key of objectKeys(dovizList)">
+
+        <div *ngFor="let childKey of objectKeys(dovizList[key])">
+          <p>{{childKey?.name}}</p>
+          <p>{{childKey?.buying}}</p>
+          <p>{{childKey?.selling}}</p>
+          <p>{{childKey?.type}}</p>
+        </div>
+        </div>
+      </tr> -->
