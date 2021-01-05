@@ -1,4 +1,4 @@
 export class Doviz{
-  constructor(public buying: string, public selling: string, public type: string, public name: string )  {}
+  constructor(public buying: Float32Array, public selling: Float32Array, public type: string, public name: string )  {}
 
 }

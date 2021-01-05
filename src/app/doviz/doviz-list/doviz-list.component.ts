@@ -11,7 +11,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class DovizListComponent implements OnInit {
   objectKeys = Object.keys;
   dovizList: Array<object> = [];
-  exchangeAmount = '';
+  exchangeForm: FormGroup;
+  output: number;
 
   constructor(private dovizService: DovizService) {}
 
@@ -38,20 +39,28 @@ export class DovizListComponent implements OnInit {
         }
       });
 
-      //     Object.keys(data).map(function(key) {
-      //     const pair = {};
-      //     const k = 'key';
-      //     const v = 'value';
-
-      //     pair[k] = key;
-      //     pair[v] = data[key];
-      //     console.log("pair:" , pair[v]);
-
-      //     if(pair[k] !== 'Update_Date'){
-      //       this.dovizList.push(pair[v]);
-      //     }
-
-      // });
     });
+
+
+    this.exchangeForm = new FormGroup({
+
+      'exchangeAmount': new FormControl(null),
+      'currency1': new FormControl(null),
+      'currency2': new FormControl(null),
+    });
+
+  }
+
+  clickEvent(){
+    this.output = this.exchangeForm.value;
+    console.log(this.exchangeForm.value);
+    // tslint:disable-next-line: max-line-length
+    this.output = parseFloat(this.exchangeForm.value.exchangeAmount) * parseFloat(this.exchangeForm.value.currency1) / parseFloat(this.exchangeForm.value.currency2);
+    console.log(parseFloat(this.exchangeForm.value.exchangeAmount));
+    console.log(parseFloat(this.exchangeForm.value.currency1));
+    console.log(parseFloat(this.exchangeForm.value.currency2));
+    console.log(this.output);
+
+    return this.output;
   }
 }
